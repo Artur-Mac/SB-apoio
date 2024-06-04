@@ -221,4 +221,11 @@ input[type="number"] {
     border-radius: 50%;
     position: relative;
 }
+.ponibus{
+    background-color: rgb(35, 214, 160);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+}
 

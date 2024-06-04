@@ -8,6 +8,15 @@ var markers = L.layerGroup();
 import municipios from './PE_Municipios_2022.js';
 import bairros from './Bairros_RMR_Sirgas2000.js';
 
+var ponibusi = L.icon({
+    iconUrl: "assets/296715.png",
+
+    iconSize:     [20, 20], // size of the icon
+    
+    //iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+})
 fetch('http://127.0.0.1:8000/bairros')
     .then(response => response.json())
     .then(data => {
@@ -31,7 +40,7 @@ document.getElementById('pessoas').addEventListener('click', function () {
     var n_bairro_a = document.getElementById('n_bairro_a').value;
 
 
-    var url = new URL('http://localhost:8000/dados');
+    const url = new URL('http://localhost:8000/dados');
     var params = { sexo: sexo, tipo_defic: deficiencia, idade_min: idade_min, idade_max: idade_max, n_bairro_a: n_bairro_a };
     url.search = new URLSearchParams(params).toString();
 
@@ -86,7 +95,7 @@ function sucess(pos) {
 
             // Verifica se o ponto está dentro do círculo
             if (distance <= circle.getRadius()) {
-                var marker = L.marker(pointCoords);
+                var marker = L.marker(pointCoords,{icon: ponibusi});
                 markers.addLayer(marker);
             }
         });
